@@ -1,26 +1,178 @@
 @import "tailwindcss";
 
+/* ===========================
+   Design System
+=========================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --background: #f8fcff;
+  --foreground: #1e293b;
+
+  --primary: #60a5fa;
+  --primary-hover: #3b82f6;
+
+  --secondary: #eef7ff;
+  --card: #ffffff;
+
+  --muted: #64748b;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-sora);
+
+  /* Radius */
+  --radius-card: 24px;
+  --radius-button: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(96, 165, 250, 0.08);
+}
+
+/* Dark Theme */
+.dark {
+  --background: #08131f;
+  --foreground: #f8fafc;
+
+  --card: #102033;
+  --secondary: #132234;
+
+  --primary: #60a5fa;
+  --primary-hover: #93c5fd;
+
+  --muted: #cbd5e1;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ===========================
+   Base Styles
+=========================== */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+}
+
+/* Selection */
+::selection {
+  background: #bfdbfe;
+  color: #1e293b;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ===========================
+   Floating Butterflies
+   =========================== */
+.butterfly { 
+  will-change: transform, opacity;
+}
+.butterfly span { display: block; }
+
+@keyframes floatA {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(18px, -22px, 0) rotate(6deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+@keyframes floatB {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-20px, -18px, 0) rotate(-8deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+@keyframes floatC {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(12px, -28px, 0) rotate(4deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+.b1 { animation: floatA 7.2s ease-in-out infinite; font-size: 18px; }
+.b2 { animation: floatB 9.3s ease-in-out infinite; font-size: 14px; opacity: 0.95; }
+.b3 { animation: floatC 8.1s ease-in-out infinite; font-size: 16px; opacity: 0.9; }
+.b4 { animation: floatA 10.5s ease-in-out infinite; font-size: 12px; opacity: 0.85; }
+
+/* ===========================
+   Custom Cursor + Glow
+   =========================== */
+.custom-cursor-dot,
+.custom-cursor-ring,
+.custom-cursor-glow { position: fixed; pointer-events: none; z-index: 99999; }
+
+.custom-cursor-dot {
+  width: 12px; height: 12px; border-radius: 9999px; background: #0284c7; box-shadow: 0 4px 14px rgba(2,132,199,0.25); transform: translate3d(-50%, -50%, 0); transition: width 180ms ease, height 180ms ease, transform 80ms linear; mix-blend-mode: screen;
+}
+.custom-cursor-ring {
+  width: 56px; height: 56px; border-radius: 9999px; border: 2px solid rgba(3,105,161,0.12); background: rgba(99,102,241,0.02); transform: translate3d(-50%, -50%, 0); transition: width 220ms ease, height 220ms ease, border-color 200ms ease, transform 80ms linear;
+}
+.custom-cursor-glow {
+  width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle at center, rgba(96,165,250,0.18), rgba(59,130,246,0.02)); filter: blur(28px); transform: translate3d(-50%, -50%, 0); opacity: 0.9; transition: opacity 220ms ease;
+}
+
+.custom-cursor-dot.cursor-grow { width: 18px; height: 18px; }
+.custom-cursor-ring.cursor-grow { width: 96px; height: 96px; border-color: rgba(3,105,161,0.18); }
+
+/* Small adjustments to hide native cursor in big areas */
+body, .cursor-hide { cursor: none; }
+
+/* Scroll indicator bounce tweak */
+.animate-bounce { animation: bounce 1s infinite; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Avatar float (gentle) */
+@keyframes bob {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+.avatar-float { animation: bob 6.2s ease-in-out infinite; }
+
+/* Project card and modal tweaks */
+.group:hover img { transform: translateZ(0); }
+.project-modal-enter { opacity: 0; }
+
+/* Micro animation helpers */
+.lift { transition: transform 220ms cubic-bezier(.2,.9,.2,1); }
+.lift:hover { transform: translateY(-6px); }
+
+/* small responsive adjustments */
+@media (max-width: 768px) {
+  .avatar-float { width: 260px !important; }
 }
