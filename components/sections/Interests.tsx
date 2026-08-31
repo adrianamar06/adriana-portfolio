@@ -1,189 +1,145 @@
+"use client";
+
 import Image from "next/image";
 import FadeIn from "../ui/FadeIn";
-import SectionTitle from "../ui/SectionTitle";
 
 const interests = [
   {
-    title: "Technology",
-    description: "Building, experimenting, and turning ideas into something real.",
-    image: "/interests/technology.jpg",
-    size: "large",
-  },
-  {
-    title: "Photography",
-    description: "Finding little moments worth remembering.",
-    image: "/interests/photography.jpg",
-    size: "small",
-  },
-  {
-    title: "Healthcare",
-    description: "Exploring where technology and healthcare meet.",
-    image: "/interests/healthcare.jpg",
-    size: "small",
-  },
-  {
-    title: "Leadership",
-    description: "Creating communities and bringing people together.",
+    number: "01",
+    title: "Group Fitness",
+    description:
+      "I enjoy bringing people together for movement with purpose.",
+    label: "WHAT I LOVE DOING",
     image: "/interests/leadership.jpg",
-    size: "large",
+    size: "lg:col-span-2",
+  },
+
+  {
+    number: "02",
+    title: "Photography",
+    description:
+      "People, personalities, and little moments.",
+    label: "WHAT I NOTICE",
+    image: "/interests/photography.jpg",
+    size: "",
   },
   {
-    title: "Creativity",
-    description: "Design, visual storytelling, and making things feel different.",
-    image: "/interests/creativity.jpg",
-    size: "small",
+    number: "03",
+    title: "Coffee",
+    description:
+      "Hot: latte. Iced: Brown sugar shaken espresso. Obviously.",
+    label: "LOVE",
+    image: "/interests/coffee.jpg",
+    size: "",
+  },
+  {
+    number: "04",
+    title: "Traveling",
+    description:
+      "New places, perspectives, and stories.",
+    label: "CURIOUS",
+    image: "/interests/travel.jpg",
+    size: "",
+  },
+  {
+    number: "05",
+    title: "Baking",
+    description:
+      "Banana bread is basically my signature.",
+    label: "MY SPECIALTY",
+    image: "/interests/banana-bread.jpg",
+    size: "",
   },
 ];
 
 export default function Interests() {
   return (
-    <section
-      id="interests"
-      className="mx-auto max-w-7xl px-8 py-32"
-    >
-      <FadeIn>
-        <SectionTitle
-          number="03"
-          title="Things I'm into"
-        />
+    <FadeIn>
+      <section
+        id="interests"
+        className="mx-auto max-w-6xl px-8 py-28"
+      >
 
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-500">
-          A collection of things that inspire me, keep me curious,
-          and influence the way I create.
-        </p>
+        {/* Heading */}
+        <div className="mb-12">
 
-        <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-sky-500">
+            04 — Beyond the screen
+          </p>
 
-          {/* Technology */}
-          <div className="group relative overflow-hidden rounded-[2rem] md:row-span-2">
-            <div className="relative h-[520px]">
-              <Image
-                src={interests[0].image}
-                alt={interests[0].title}
-                fill
-                className="object-cover transition duration-700 group-hover:scale-105"
-              />
+          <h2 className="text-4xl font-bold tracking-tight text-slate-900 md:text-6xl">
+            Things I love.
+          </h2>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
-
-              <div className="absolute bottom-0 left-0 p-8 text-white">
-                <p className="mb-2 text-sm uppercase tracking-[0.2em] text-white/70">
-                  01
-                </p>
-
-                <h3 className="text-3xl font-semibold">
-                  {interests[0].title}
-                </h3>
-
-                <p className="mt-3 max-w-sm text-sm leading-6 text-white/80">
-                  {interests[0].description}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Photography */}
-          <div className="group relative overflow-hidden rounded-[2rem]">
-            <div className="relative h-[250px]">
-              <Image
-                src={interests[1].image}
-                alt={interests[1].title}
-                fill
-                className="object-cover transition duration-700 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
-
-              <div className="absolute bottom-0 left-0 p-6 text-white">
-                <h3 className="text-2xl font-semibold">
-                  {interests[1].title}
-                </h3>
-
-                <p className="mt-2 text-sm text-white/80">
-                  {interests[1].description}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Healthcare */}
-          <div className="group relative overflow-hidden rounded-[2rem]">
-            <div className="relative h-[250px]">
-              <Image
-                src={interests[2].image}
-                alt={interests[2].title}
-                fill
-                className="object-cover transition duration-700 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
-
-              <div className="absolute bottom-0 left-0 p-6 text-white">
-                <h3 className="text-2xl font-semibold">
-                  {interests[2].title}
-                </h3>
-
-                <p className="mt-2 text-sm text-white/80">
-                  {interests[2].description}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Leadership */}
-          <div className="group relative overflow-hidden rounded-[2rem] lg:col-span-2">
-            <div className="relative h-[300px]">
-              <Image
-                src={interests[3].image}
-                alt={interests[3].title}
-                fill
-                className="object-cover transition duration-700 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-
-              <div className="absolute bottom-0 left-0 p-7 text-white">
-                <p className="mb-2 text-sm uppercase tracking-[0.2em] text-white/70">
-                  04
-                </p>
-
-                <h3 className="text-3xl font-semibold">
-                  {interests[3].title}
-                </h3>
-
-                <p className="mt-2 max-w-lg text-sm text-white/80">
-                  {interests[3].description}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Creativity */}
-          <div className="group relative overflow-hidden rounded-[2rem]">
-            <div className="relative h-[300px]">
-              <Image
-                src={interests[4].image}
-                alt={interests[4].title}
-                fill
-                className="object-cover transition duration-700 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
-
-              <div className="absolute bottom-0 left-0 p-7 text-white">
-                <h3 className="text-2xl font-semibold">
-                  {interests[4].title}
-                </h3>
-
-                <p className="mt-2 text-sm text-white/80">
-                  {interests[4].description}
-                </p>
-              </div>
-            </div>
-          </div>
+          <p className="mt-4 max-w-xl text-sm leading-7 text-slate-500">
+            The people, places, and little things that keep me curious,
+            creative, and grounded.
+          </p>
 
         </div>
-      </FadeIn>
-    </section>
+
+        {/* Gallery */}
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+
+          {interests.map((interest) => (
+            <article
+              key={interest.number}
+              className={`group relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-xl ${interest.size}`}
+            >
+
+              {/* Image */}
+              <div className="relative h-56 overflow-hidden">
+
+                <Image
+                  src={interest.image}
+                  alt={interest.title}
+                  fill
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
+
+                {/* Number */}
+                <span className="absolute left-5 top-5 text-xs tracking-[0.2em] text-white/80">
+                  {interest.number}
+                </span>
+
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+
+                <div className="flex items-center justify-between gap-4">
+
+                  <h3 className="text-2xl font-semibold text-slate-900">
+                    {interest.title}
+                  </h3>
+
+                  <span className="text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-400">
+                    {interest.label}
+                  </span>
+
+                </div>
+
+                <p className="mt-3 text-sm leading-6 text-slate-500">
+                  {interest.description}
+                </p>
+
+                {/* Editorial Detail */}
+                <div className="mt-6 flex items-center gap-2">
+
+                  <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
+
+                  <span className="h-px w-8 bg-sky-200 transition-all duration-500 group-hover:w-14" />
+
+                </div>
+
+              </div>
+            </article>
+          ))}
+
+        </div>
+      </section>
+    </FadeIn>
   );
 }

@@ -3,82 +3,98 @@ import SectionTitle from "../ui/SectionTitle";
 
 const work = [
   {
-    year: "May 2026 - August 2026",
+    year: "May 2026 — August 2026",
     title: "IT & Data Intern",
     company: "Help Us Grow Foundation",
-    desc: "Managed student data, automated reports, and improved data organization using Google Sheets and AI tools.",
+    desc: "Managed student data, reorganized large datasets, created reports, and improved data organization using Google Sheets and AI tools.",
   },
   {
-    year: "January 2026 - Present",
+    year: "January 2026 — Present",
     title: "Multimedia Production Assistant",
     company: "USF Housing & Residential Education",
-    desc: "Produced digital media, photography, and promotional content for campus events.",
+    desc: "Produce digital media, photography, and promotional content for campus events and residential programs.",
   },
   {
-    year: "August 2026 - December 2026",
+    year: "August 2025 — December 2025",
     title: "Peer Mentor",
     company: "University of South Florida",
-    desc: "Provided academic support to incoming freshmen, ensuring academic and personal success.",
+    desc: "Support incoming students through academic guidance, campus resources, and mentorship throughout their transition to USF.",
   },
 ];
 
 const leadership = [
   {
-    year: "May 2026 - Present",
+    year: "May 2026 — Present",
     title: "Vice President of Technology",
     company: "SHPE USF",
-    desc: "Lead a team developing HackaBull, HackJam, websites, Discord, and technical initiatives.",
+    desc: "Direct chapter technology strategy, technical initiatives, engineering projects, and technology execution for flagship hackathons and Build Labs.",
   },
   {
-    year: "January 2026 - May 2026",
+    year: "January 2026 — May 2026",
     title: "Hacker's Experience Lead",
     company: "SHPE USF",
-    desc: "Planned community events and increased member engagement.",
+    desc: "Led cross-functional teams responsible for hacker logistics, event flow, resources, and the overall participant experience for large-scale hackathons.",
   },
   {
-    year: "August 2025 - December 2025",
+    year: "August 2025 — December 2025",
     title: "Technology Director",
     company: "SHPE USF",
-    desc: "C",
+    desc: "Developed technical partnerships and collaborated with student organizations to coordinate workshops, events, and shared technology infrastructure.",
   },
 ];
+
+type ExperienceItem = {
+  year: string;
+  title: string;
+  company: string;
+  desc: string;
+};
 
 function Timeline({
   items,
 }: {
-  items: {
-    year: string;
-    title: string;
-    company: string;
-    desc: string;
-  }[];
+  items: ExperienceItem[];
 }) {
   return (
     <div className="relative">
+
+      {/* Timeline Line */}
       <div className="absolute left-3 top-0 h-full w-px bg-slate-200" />
 
-      <div className="space-y-10">
-        {items.map((item) => (
-          <div key={item.title} className="relative pl-12">
-            <div className="absolute left-0 top-2 h-6 w-6 rounded-full border-4 border-white bg-sky-400 shadow-md" />
+      <div className="space-y-12">
 
-            <p className="text-sm font-medium uppercase tracking-widest text-sky-500">
+        {items.map((item) => (
+          <div
+            key={item.title}
+            className="group relative pl-12"
+          >
+
+            {/* Timeline Dot */}
+            <div className="absolute left-0 top-1 h-6 w-6 rounded-full border-4 border-[#F5F6F2] bg-sky-400 shadow-sm transition-all duration-300 group-hover:scale-125 group-hover:bg-sky-500" />
+
+            {/* Date */}
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-500">
               {item.year}
             </p>
 
-            <h3 className="mt-1 text-xl font-semibold text-slate-900">
+            {/* Position */}
+            <h3 className="mt-2 text-xl font-semibold text-slate-900 transition-colors duration-300 group-hover:text-sky-600">
               {item.title}
             </h3>
 
-            <p className="font-medium text-slate-600">
+            {/* Organization */}
+            <p className="mt-1 font-medium text-slate-600">
               {item.company}
             </p>
 
-            <p className="mt-2 leading-7 text-slate-500">
+            {/* Description */}
+            <p className="mt-3 max-w-xl leading-7 text-slate-500">
               {item.desc}
             </p>
+
           </div>
         ))}
+
       </div>
     </div>
   );
@@ -91,34 +107,52 @@ export default function Experience() {
       className="mx-auto max-w-7xl px-8 py-32"
     >
       <FadeIn>
+
+        {/* Section Header */}
         <SectionTitle
-          number="05"
+          number="03"
           title="Experience"
         />
 
+        {/* Two Columns */}
         <div className="mt-20 grid gap-20 lg:grid-cols-2">
 
-          {/* Work */}
-
+          {/* Professional Experience */}
           <div>
-            <h2 className="mb-10 text-3xl font-bold text-slate-900">
-              Professional Experience
-            </h2>
+
+            <div className="mb-10">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-sky-500">
+                Work
+              </p>
+
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+                Professional Experience
+              </h2>
+            </div>
 
             <Timeline items={work} />
+
           </div>
 
           {/* Leadership */}
-
           <div>
-            <h2 className="mb-10 text-3xl font-bold text-slate-900">
-              Leadership
-            </h2>
+
+            <div className="mb-10">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-sky-500">
+                Leadership
+              </p>
+
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+                Leadership
+              </h2>
+            </div>
 
             <Timeline items={leadership} />
+
           </div>
 
         </div>
+
       </FadeIn>
     </section>
   );
