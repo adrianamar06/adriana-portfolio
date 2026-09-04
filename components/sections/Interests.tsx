@@ -10,7 +10,7 @@ const interests = [
     description:
       "I enjoy bringing people together for movement with purpose.",
     label: "WHAT I LOVE DOING",
-    image: "/interests/leadership.jpg",
+    image: "/interests/fitness.jpg",
     size: "lg:col-span-2",
   },
 
