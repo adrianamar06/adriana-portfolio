@@ -28,4 +28,22 @@ export const projects = [
     liveDemo:
       "https://adrianamar06.github.io/shpe-signature-generator/",
   },
+
+  {
+    id: "moway",
+    title: "MoWay",
+    image: "/projects/moway/moway.png",
+    tech: ["Next.js", 'TypeScript', 'Supabase', 'PostgreSQL', 'Google APIs'],
+    role: "Full-Stack Developer",
+
+    summary:
+      "A custom signature generator built for SHPE USF, serving 10 executive board members and 80 directors.",
+
+    github: "https://github.com/Jascel/MoWay",
+
+    devpost: "https://devpost.com/software/moway",
+
+    liveDemo:
+      "https://moway-seven.vercel.app/",
+  },
 ];
