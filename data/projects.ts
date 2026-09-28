@@ -37,7 +37,7 @@ export const projects = [
     role: "Full-Stack Developer",
 
     summary:
-      "A custom signature generator built for SHPE USF, serving 10 executive board members and 80 directors.",
+      "Campus mobility platform that personalizes routes and parking based on schedules, accessibility needs, and real-time community conditions.",
 
     github: "https://github.com/Jascel/MoWay",
 
