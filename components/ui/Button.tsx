@@ -26,11 +26,11 @@ export const Button = ({
   className = "",
 }: ButtonProps) => {
   const baseStyles =
-    "inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-medium text-sm transition-all focus:outline-none gap-2 cursor-pointer no-underline";
+    "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 cursor-pointer no-underline";
 
   const variantStyles = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 shadow-md shadow-blue-500/20",
-    secondary: "bg-zinc-800 text-zinc-100 hover:bg-zinc-700",
+    primary: "bg-sky-500 text-white shadow-md shadow-sky-500/25 hover:bg-sky-600",
+    secondary: "border border-sky-200 bg-white/75 text-slate-700 shadow-sm hover:border-sky-300 hover:bg-sky-50",
     outline: "border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white",
   };
 

@@ -2,46 +2,48 @@
 import { useEffect, useRef } from "react";
 
 export default function CustomCursor() {
-  const ringRef = useRef<HTMLDivElement | null>(null);
-  const dotRef = useRef<HTMLDivElement | null>(null);
-  const glowRef = useRef<HTMLDivElement | null>(null);
+  const bubbleRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const onMouseMove = (e: MouseEvent) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      if (ringRef.current) ringRef.current.style.transform = `translate3d(${x - 28}px, ${y - 28}px, 0)`;
-      if (dotRef.current) dotRef.current.style.transform = `translate3d(${x - 6}px, ${y - 6}px, 0)`;
-      if (glowRef.current) glowRef.current.style.transform = `translate3d(${x - 120}px, ${y - 120}px, 0)`;
+    const bubble = bubbleRef.current;
+    if (!bubble) return;
+
+    const onPointerMove = (event: PointerEvent) => {
+      bubble.style.transform = `translate3d(${event.clientX + 10}px, ${event.clientY + 10}px, 0)`;
+      bubble.classList.add("custom-cursor-bubble-visible");
     };
 
-    window.addEventListener("mousemove", onMouseMove);
-
-    const addHover = () => {
-      document.querySelectorAll("a, button, [data-cursor]").forEach((el) => {
-        el.addEventListener("pointerenter", () => {
-          ringRef.current?.classList.add("cursor-grow");
-          dotRef.current?.classList.add("cursor-grow");
-        });
-        el.addEventListener("pointerleave", () => {
-          ringRef.current?.classList.remove("cursor-grow");
-          dotRef.current?.classList.remove("cursor-grow");
-        });
-      });
+    const onPointerOver = (event: PointerEvent) => {
+      if (event.target instanceof Element && event.target.closest("a, button, [data-cursor]")) {
+        bubble.classList.add("custom-cursor-bubble-active");
+      }
     };
 
-    addHover();
+    const onPointerOut = (event: PointerEvent) => {
+      if (!(event.target instanceof Element)) return;
+
+      const fromInteractive = event.target.closest("a, button, [data-cursor]");
+      const toInteractive = event.relatedTarget instanceof Element
+        ? event.relatedTarget.closest("a, button, [data-cursor]")
+        : null;
+
+      if (fromInteractive && !toInteractive) {
+        bubble.classList.remove("custom-cursor-bubble-active");
+      }
+    };
+
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerover", onPointerOver);
+    window.addEventListener("pointerout", onPointerOut);
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerover", onPointerOver);
+      window.removeEventListener("pointerout", onPointerOut);
     };
   }, []);
 
   return (
-    <>
-      <div ref={glowRef} className="custom-cursor-glow" />
-      <div ref={ringRef} className="custom-cursor-ring" />
-      <div ref={dotRef} className="custom-cursor-dot" />
-    </>
+    <div ref={bubbleRef} aria-hidden="true" className="custom-cursor-bubble" />
   );
 }

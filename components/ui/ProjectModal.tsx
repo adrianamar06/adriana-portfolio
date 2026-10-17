@@ -10,6 +10,7 @@ type Project = {
   tech: string[];
   role: string;
   summary: string;
+  overview?: string;
   github?: string;
   devpost?: string;
   liveDemo?: string;
@@ -64,9 +65,6 @@ export default function ProjectModal({
             {project.title}
           </h2>
 
-          <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-            {project.summary}
-          </p>
         </div>
 
         {/* Image */}
@@ -80,8 +78,18 @@ export default function ProjectModal({
           />
         </div>
 
+        {/* Project overview */}
+        <section className="mt-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+            Project overview
+          </p>
+          <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+            {project.overview ?? project.summary}
+          </p>
+        </section>
+
         {/* Details */}
-        <div className="mt-8 grid gap-8 md:grid-cols-2">
+        <div className="mt-8 grid gap-8 border-t border-slate-200 pt-6 md:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
               Technologies

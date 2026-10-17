@@ -25,41 +25,37 @@ export default function ProjectCard({
   onOpen,
 }: ProjectCardProps) {
   return (
-    <div className="group relative flex flex-col gap-4 rounded-2xl bg-white p-6 shadow transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
-
-      {/* Project Image */}
-      <div className="overflow-hidden rounded-md">
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-label={`View ${project.title} details`}
+      className="group relative flex aspect-square w-full flex-col overflow-hidden rounded-2xl bg-white text-left shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+    >
+      <div className="relative h-[72%] w-full shrink-0 overflow-hidden">
         <Image
           src={project.image}
-          alt={project.title}
-          width={1200}
-          height={700}
-          className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          alt=""
+          fill
+          sizes="(max-width: 639px) 100vw, 50vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 
-      {/* Project Information */}
-      <div className="flex items-center justify-between gap-6">
-
-        <div>
-          <h3 className="text-lg font-semibold text-slate-900">
+      <div className="flex min-h-0 flex-1 items-center justify-between gap-3 p-4 sm:p-5">
+        <div className="min-w-0">
+          <h3 className="line-clamp-2 text-lg font-semibold text-slate-900">
             {project.title}
           </h3>
 
-          <p className="text-sm text-slate-600">
+          <p className="mt-1 line-clamp-2 text-sm text-slate-600">
             {project.summary}
           </p>
         </div>
 
-        {/* View Button */}
-        <button
-          onClick={onOpen}
-          className="shrink-0 rounded-full bg-sky-500 px-4 py-2 text-sm text-white transition hover:bg-sky-600"
-        >
+        <span className="shrink-0 rounded-full bg-sky-500 px-4 py-2 text-sm text-white transition-colors group-hover:bg-sky-600">
           View
-        </button>
-
+        </span>
       </div>
-    </div>
+    </button>
   );
 }

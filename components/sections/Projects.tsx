@@ -26,7 +26,7 @@ export default function Projects() {
         />
       </FadeIn>
 
-      <div className="mt-12 grid gap-8">
+      <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
         {projects.map((project, index) => (
           <ProjectCard
             key={project.id}

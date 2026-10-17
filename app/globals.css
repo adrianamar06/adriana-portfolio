@@ -125,28 +125,38 @@ h4 {
 .b3 { animation: floatC 8.1s ease-in-out infinite; font-size: 16px; opacity: 0.9; }
 .b4 { animation: floatA 10.5s ease-in-out infinite; font-size: 12px; opacity: 0.85; }
 
-/* ===========================
-   Custom Cursor + Glow
-   =========================== */
-.custom-cursor-dot,
-.custom-cursor-ring,
-.custom-cursor-glow { position: fixed; pointer-events: none; z-index: 99999; }
-
-.custom-cursor-dot {
-  width: 12px; height: 12px; border-radius: 9999px; background: #0284c7; box-shadow: 0 4px 14px rgba(2,132,199,0.25); transform: translate3d(-50%, -50%, 0); transition: width 180ms ease, height 180ms ease, transform 80ms linear; mix-blend-mode: screen;
+/* Subtle bubble accent; the native pointer stays visible. */
+.custom-cursor-bubble {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(14, 165, 233, 0.45);
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.22);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.16);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 160ms ease,
+    width 180ms ease,
+    height 180ms ease,
+    background-color 180ms ease;
 }
-.custom-cursor-ring {
-  width: 56px; height: 56px; border-radius: 9999px; border: 2px solid rgba(3,105,161,0.12); background: rgba(99,102,241,0.02); transform: translate3d(-50%, -50%, 0); transition: width 220ms ease, height 220ms ease, border-color 200ms ease, transform 80ms linear;
-}
-.custom-cursor-glow {
-  width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle at center, rgba(96,165,250,0.18), rgba(59,130,246,0.02)); filter: blur(28px); transform: translate3d(-50%, -50%, 0); opacity: 0.9; transition: opacity 220ms ease;
+
+.custom-cursor-bubble-visible { opacity: 1; }
+
+.custom-cursor-bubble-active {
+  width: 18px;
+  height: 18px;
+  background: rgba(56, 189, 248, 0.32);
 }
 
-.custom-cursor-dot.cursor-grow { width: 18px; height: 18px; }
-.custom-cursor-ring.cursor-grow { width: 96px; height: 96px; border-color: rgba(3,105,161,0.18); }
-
-/* Small adjustments to hide native cursor in big areas */
-body, .cursor-hide { cursor: none; }
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor-bubble { display: none; }
+}
 
 /* Scroll indicator bounce tweak */
 .animate-bounce { animation: bounce 1s infinite; }

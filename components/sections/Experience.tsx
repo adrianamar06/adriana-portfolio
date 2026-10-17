@@ -3,22 +3,22 @@ import SectionTitle from "../ui/SectionTitle";
 
 const work = [
   {
-    year: "May 2026 — August 2026",
-    title: "IT & Data Intern",
-    company: "Help Us Grow Foundation",
-    desc: "Managed student data, reorganized large datasets, created reports, and improved data organization using Google Sheets and AI tools.",
-  },
-  {
     year: "January 2026 — Present",
     title: "Multimedia Production Assistant",
     company: "USF Housing & Residential Education",
-    desc: "Produce digital media, photography, and promotional content for campus events and residential programs.",
+    desc: "Produce photography, video, and promotional media for campus events, partnering with staff from production through post-production.",
+  },
+  {
+    year: "May 2026 — August 2026",
+    title: "IT & Data Management Intern",
+    company: "Help Us Grow Foundation",
+    desc: "Managed records for 550+ students and coordinated 60+ lesson plans; improved content creation and communication workflows with Monday.com, custom GPTs, and Avochato.",
   },
   {
     year: "August 2025 — December 2025",
     title: "Peer Mentor",
     company: "University of South Florida",
-    desc: "Support incoming students through academic guidance, campus resources, and mentorship throughout their transition to USF.",
+    desc: "Guided incoming students through academic planning, mentorship, and campus resources as they transitioned to university life.",
   },
 ];
 
@@ -27,19 +27,19 @@ const leadership = [
     year: "May 2026 — Present",
     title: "Vice President of Technology",
     company: "SHPE USF",
-    desc: "Direct chapter technology strategy, technical initiatives, engineering projects, and technology execution for flagship hackathons and Build Labs.",
+    desc: "Lead a 29-member committee through 8 team leads; oversee two annual hackathons for 500+ participants and $15K in event operations. Founded Build Labs, an 8-week technical program for 25 students.",
   },
   {
     year: "January 2026 — May 2026",
     title: "Hacker's Experience Lead",
     company: "SHPE USF",
-    desc: "Led cross-functional teams responsible for hacker logistics, event flow, resources, and the overall participant experience for large-scale hackathons.",
+    desc: "Led cross-functional coordination of participant logistics, event resources, and the hacker experience for large-scale hackathons.",
   },
   {
     year: "August 2025 — December 2025",
     title: "Technology Director",
     company: "SHPE USF",
-    desc: "Developed technical partnerships and collaborated with student organizations to coordinate workshops, events, and shared technology infrastructure.",
+    desc: "Developed technical partnerships and worked with student organizations to coordinate workshops, events, and technology initiatives.",
   },
 ];
 
@@ -78,7 +78,7 @@ function Timeline({
             </p>
 
             {/* Position */}
-            <h3 className="mt-2 text-xl font-semibold text-slate-900 transition-colors duration-300 group-hover:text-sky-600">
+            <h3 className="mt-2 text-xl font-semibold text-slate-900">
               {item.title}
             </h3>
 
