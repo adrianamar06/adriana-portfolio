@@ -34,7 +34,7 @@ const interests: Interest[] = [
     overview:
       "Photography helps me slow down and pay attention to the details that make people and everyday moments feel distinct.",
     label: "WHAT I NOTICE",
-    images: ["/interests/photography.jpg", "/interests/photography2.jpg"],
+    images: ["/interests/photography.jpg", "/interests/photography2.jpg", null],
     size: "",
   },
   {
